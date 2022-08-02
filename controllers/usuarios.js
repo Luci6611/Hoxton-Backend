@@ -1,12 +1,18 @@
+const {request, response} = require ("express")
+
 const usuariosGet = (req, res)=> {
     res.json({
       msg:"peticion GET-controllers"
     });
   }
 
-const usuariosPost = (req, res)=> {
+const usuariosPost = (req = request, res = response)=> {
+   const {nombre,id,email} = req.body;
     res.json({
-      msg:"peticion post-controllers"
+      msg:"peticion post-controllers",
+       nombre,
+       id,
+       email,
     });
     }
 

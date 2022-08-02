@@ -10,6 +10,8 @@ class server{
 
     }
     middleware(){
+        // leer el body que manda el frontend
+        this.app.use(express.json());
         // carpeta public
         this.app.use(express.static("public"));
     }
