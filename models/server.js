@@ -1,14 +1,21 @@
-const express = require('express')
-
+const express = require('express');
+const {dbconnection} = require("../database/config");
 class server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
         this.usuariosEndPoint = "/api/usuarios";
+
+        this.conectarDb ();
         this.middleware();
         this.routes();   
 
     }
+    // conectar a base de datos
+     async conectarDb(){
+        await dbconnection();
+    }
+
     middleware(){
         // leer el body que manda el frontend
         this.app.use(express.json());
