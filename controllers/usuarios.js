@@ -6,9 +6,14 @@ const bcrypt = require('bcryptjs');
 
 const Usuario = require("../models/usuarios");
 
-const usuariosGet = (req, res)=> {
+const usuariosGet = async (req = request, res)=> {
+  // paginacion usuarios
+  const {limite =6, desde=0} = req.query;
+  const usuarios = await Usuario.find({estado:true}).skip(desde).limit(limite);
+  const total = await Usuario.countDocuments({estado:true});
     res.json({
-      msg:"peticion GET-controllers"
+      total,
+      usuarios,
     });
   }
 
@@ -55,7 +60,7 @@ const usuariosDelete = async (req, res)=> {
   const usuarioBorrado = await Usuario.findByIdAndUpdate(id,{estado:false},{new:true});
 
     res.json({
-      msg:"usuario eliminado correctamente de la base de datos", 
+      msg:"usuario inactivado correctamente de la base de datos", 
       usuarioBorrado
     });
     }
