@@ -17,14 +17,7 @@ const usuariosPost = async (req = request, res = response)=> {
    const {nombre,email,password} = req.body;
 
    const usuario = new Usuario( {nombre,email,password});
-  //  validando si email existe en la base de datos
-const existeEmail = await Usuario.findOne({email});
-if (existeEmail) {
-  return res.status(400).json({
-    msg:"el email ya existe en la base de datos",
-  });
-};
-  // encriptando contraseña
+
 const salt=bcrypt.genSaltSync();
 usuario.password =bcrypt.hashSync(password, salt);
 
