@@ -61,7 +61,8 @@ const usuariosDelete = async (req, res)=> {
 
     res.json({
       msg:"usuario inactivado correctamente de la base de datos", 
-      usuarioBorrado
+      usuarioBorrado,
+     
     });
     }
 
