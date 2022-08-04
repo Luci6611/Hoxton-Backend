@@ -12,7 +12,6 @@ const { esAdminRole } = require("../middlewares/validar-rol");
  router.get('/',[
    validarJWT,
     esAdminRole,
-    validarCampos  
  ],usuariosGet);
 
 
