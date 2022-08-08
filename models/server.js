@@ -6,6 +6,7 @@ class server{
         this.port = process.env.PORT;
         this.usuariosEndPoint = "/api/usuarios";
         this.authPath = "/api/auth";
+        this.categoriasPath = "/api/categorias";
 
         this.conectarDb ();
         this.middleware();
@@ -26,6 +27,7 @@ class server{
             // RUTAS
     routes(){
       this.app.use(this.usuariosEndPoint,require("../routes/usuarios"));
+      this.app.use(this.categoriasPath,require("../routes/categorias"));
       this.app.use(this.authPath,require("../routes/auth"));
     }
     listen(){

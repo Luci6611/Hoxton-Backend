@@ -1,11 +1,16 @@
 const Role = require("../models/role");
 const Usuario = require("../models/usuarios");
+const Categoria = require("../models/categorias");
+
 const esRoleValido = async (role="")=>{
+   
     const existeRole = await Role.findOne({role});  
+    
     if(!existeRole){
         throw new Error(`El rol ${role} no existe en la BD`);
     }
-} 
+}
+ 
  //  validando si email existe en la base de datos
 const emailExiste =async(email)=>{
     
@@ -23,8 +28,18 @@ const idExiste =async(id)=>{
     };
     }
 
+// validar si existe categoria por id
+
+const categoriaExiste =async(id)=>{
+    
+    const existeCategoria = await Categoria.findById(id);
+    if (!existeCategoria) {
+        throw new Error(`El id ${id} no existe en la Base de Datos`);
+    };
+    }
 module.exports ={
     esRoleValido,
     emailExiste,
-    idExiste 
+    idExiste,
+    categoriaExiste
 };
