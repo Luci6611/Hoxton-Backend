@@ -3,12 +3,12 @@ const {Schema,  model} = require("mongoose");
 const categoriaSchema = Schema({
 
     nombre:{
-        type: "string",
+        type: String,
         required:[true,"El nombre es obligatorio"],
         unique: true,
     },
     estado:{
-        type: "boolean",
+        type: Boolean,
         default:true,
         required: true,
     },

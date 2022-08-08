@@ -2,6 +2,15 @@
     const Categoria = require ("../models/categorias");
 
 
+    const obtenerCategorias = async(req=request, res=response)=>{
+        const {limite=6, desde=0} = req.query;
+
+        const consulta={estado:true}
+
+        
+
+    }
+
  const crearCategoria = async(req=request, res=response)=>{
 
         const nombre = req.body.nombre.toUpperCase();

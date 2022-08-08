@@ -5,7 +5,7 @@ const{crearCategoria} = require("../controllers/categorias");
 const router =Router();
 
 
-// router.get("/", obtenerCategorias);
+router.get("/", obtenerCategorias);
 
 // router.get("/:id", obtenerCategoria);
 
