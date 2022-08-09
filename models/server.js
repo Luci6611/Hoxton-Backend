@@ -8,6 +8,7 @@ class server{
         this.authPath = "/api/auth";
         this.categoriasPath = "/api/categorias";
         this.menuPath = "/api/menus";
+        this.buscarPath = "/api/buscar";
 
         this.conectarDb ();
         this.middleware();
@@ -31,6 +32,7 @@ class server{
       this.app.use(this.categoriasPath,require("../routes/categorias"));
       this.app.use(this.authPath,require("../routes/auth"));
       this.app.use(this.menuPath,require("../routes/menus"));
+      this.app.use(this.buscarPath,require("../routes/buscar"));
     }
     listen(){
         this.
