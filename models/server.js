@@ -7,6 +7,7 @@ class server{
         this.usuariosEndPoint = "/api/usuarios";
         this.authPath = "/api/auth";
         this.categoriasPath = "/api/categorias";
+        this.menuPath = "/api/menus";
 
         this.conectarDb ();
         this.middleware();
@@ -29,6 +30,7 @@ class server{
       this.app.use(this.usuariosEndPoint,require("../routes/usuarios"));
       this.app.use(this.categoriasPath,require("../routes/categorias"));
       this.app.use(this.authPath,require("../routes/auth"));
+      this.app.use(this.menuPath,require("../routes/menus"));
     }
     listen(){
         this.
