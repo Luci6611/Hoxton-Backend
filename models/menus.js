@@ -41,6 +41,13 @@ const MenuSchema = Schema({
     img:{
         type:String,
     }
+    });
 
-});
+   MenuSchema.methods.toJSON = function(){
+        const {__v,estado,...menu} = this.toObject();
+     
+        return menu;
+    }
+
+
 module.exports = model("Menu",MenuSchema);
