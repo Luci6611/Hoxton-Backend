@@ -39,11 +39,12 @@ res.json({
 
 // crear menus nuevos
 const CrearMenu = async(req,res) =>{
-const { precio, categoria, detalle } = req.body;
+const { precio, categoria, detalle , img } = req.body;
 
 const nombre = req.body.nombre.toUpperCase(); 
 
 const menuDB = await Menu.findOne({nombre});
+
 
 if(menuDB){
     return res.status(400).json({
@@ -58,6 +59,7 @@ const data ={
     categoria,
     precio,
     detalle,
+    img,
     usuario: req.usuario._id,
 };
 
@@ -68,7 +70,6 @@ await  menu.save();
 
 res.status(201).json({
     msg:"se agrego correctamente nuevo menu",
-    menu
 });
 
 };
@@ -92,7 +93,10 @@ const actualizarMenu = async(req,res) =>{
 
     const menu = await Menu.findByIdAndUpdate(id, data,{new:true});
 
-    res.status(200).json(menu);
+    res.status(200).json({
+        msg:"menu actualizado correctamente",
+        menu
+    });
 
 };
 
@@ -106,7 +110,11 @@ const borrarMenu = async(req,res) =>{
         {new:true}    
         );
 
-        res.json(menuBorrado);
+        res.json({
+            msg:"menu inactivado",
+            menuBorrado
+
+        });
 };
 
 
