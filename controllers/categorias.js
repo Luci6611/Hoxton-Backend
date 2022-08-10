@@ -6,12 +6,12 @@ const obtenerCategorias = async (req = request, res = response) => {
 
   const consulta = { estado: true };
 
-  const categorias = await Categoria.find({ consulta })
+  const categorias = await Categoria.find(consulta)
     .skip(desde)
     .limit(limite)
     .populate("usuario", "nombre email");
 
-  const total = await Categoria.countDocuments({ consulta });
+  const total = await Categoria.countDocuments(consulta);
 
   res.status(200).json({
     total,
