@@ -20,6 +20,7 @@ router.get("/:id",[
 router.post("/",[
     validarJWT,
     check("nombre","El nombre es obligatorio").notEmpty(),
+    esAdminRole,
     validarCampos
 ], crearCategoria);
 
