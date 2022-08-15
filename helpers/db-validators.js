@@ -49,10 +49,20 @@ const categoriaExiste =async(id)=>{
         };
         }
 
+         // validar si pedido existe por id
+    const pedidoExiste =async(id)=>{
+    
+        const existePedido = await Pedido.findById(id);
+        
+        if (!existePedido) {
+            throw new Error(`El Pedido con el id ${id} no existe en la Base de Datos`);
+        };
+        }
 module.exports ={
     esRoleValido,
     emailExiste,
     idExiste,
     categoriaExiste,
-    menuExiste
+    menuExiste,
+    pedidoExiste
 };

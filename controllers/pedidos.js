@@ -19,12 +19,25 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
 
     res.json({
         total,
-        menus,
+        pedidos,
     });
 };
 
+// OBTENER UN PEDIDO POR SU ID
 
+const obtenerPedido = async(req= request, res= response)=>{
+    const {id} = req.params;
+    const pedido = await Pedido.findById(id)
+    .populate("menu", "nombre")
+    .populate("usuario", "nombre");
+
+res.json({
+   pedido,
+});
+
+};
 module.exports = {
     obtenerLosPedidos,
-    
+    obtenerPedido
+
 };
