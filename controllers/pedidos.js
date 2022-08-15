@@ -35,9 +35,10 @@ res.json({
    pedido,
 });
 
-};
+}
+
 module.exports = {
     obtenerLosPedidos,
     obtenerPedido
 
-};
+}

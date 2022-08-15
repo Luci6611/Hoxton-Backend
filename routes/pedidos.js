@@ -9,23 +9,33 @@ const {
   actualizarPedido,
   borrarPedido,
   obtenerPedido,
-  NuevoPedido,
+//   NuevoPedido,
 } = require("../controllers/pedidos");
 
 const router = Router();
+// OBTENER TODOS LOS PEDIDOS
 
-router.get("/", obtenerLosPedidos);
+router.get("/",  validarJWT ,obtenerLosPedidos);
 
+// OBTENER UN PEDIDO POR SU ID
 router.get(
   "/:id",
   [
+    validarJWT,
     check("id", "No es un id de mongo valido").isMongoId(),
     check("id").custom(pedidoExiste), //"validando si producto exite por id"
     validarCampos,
   ],
   obtenerPedido
 );
-
-//  router.post("/",NuevoPedido );
+// CREAR PEDIDO
+// router.post(
+//     "/",
+//     [
+//       validarJWT,
+//       esAdminRole,
+//     ],
+//     NuevoPedido
+//   );
 
 module.exports = router;
