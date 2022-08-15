@@ -77,7 +77,7 @@ res.status(201).json({
 // ACTUALIZAR MENU
 const actualizarMenu = async(req,res) =>{
     const {id} = req.params;
-    const {precio, categoria, detalle, disponible} =  req.body;
+    const {precio, categoria, detalle, disponible, img} =  req.body;
     const usuario = req.usuario._id;
     let data={
         precio,
@@ -85,6 +85,7 @@ const actualizarMenu = async(req,res) =>{
         categoria,
         disponible,
         usuario,
+        img
     };
     // VALIDANDO SI NOMBRE ESTA EN MAYUSCULA
     if(req.body.nombre){
