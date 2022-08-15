@@ -23,6 +23,11 @@ pedido:{
         required:true,
 
     },
+    entrega: {
+        type: String,
+        enum: ["Pendiente", "Listo"],
+        default: "Pendiente",
+      },
     estado:{
         type: Boolean,
         default:true,
