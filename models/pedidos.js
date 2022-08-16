@@ -22,8 +22,8 @@ const PedidoSchema = Schema({
     },
     entrega: {
         type:Boolean,
-       
         default: false,
+        
       },
     estado:{
         type: Boolean,

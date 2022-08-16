@@ -1,5 +1,7 @@
 const {request, response, json} = require("express");
 const Pedido = require("../models/pedidos");
+const Usuario = require("../models/usuarios");
+const Menu = require("../models/menus");
 
 
 // GET PARA TRAER TODOS LOS PEDIDOS PAGINADOS
@@ -37,8 +39,25 @@ res.json({
 
 }
 
+
+
+// CREAR UN PEDIDO
+const  NuevoPedido= async(req=request, res=resolve)=> {
+
+    const  { usuario_id, fecha, menu_id, estado,entrega} = req.body;
+    const pedido=new Pedido({usuario: usuario._id, menu: menu._id, fecha: fecha,estado: estado, entrega: entrega });
+    await pedido.save();
+
+    res.status(201).json({
+    pedido,
+    
+}); }
+
+
+
 module.exports = {
     obtenerLosPedidos,
-    obtenerPedido
+    obtenerPedido,
+    NuevoPedido
 
 }

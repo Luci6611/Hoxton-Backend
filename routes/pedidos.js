@@ -9,7 +9,7 @@ const {
   actualizarPedido,
   borrarPedido,
   obtenerPedido,
-//   NuevoPedido,
+  NuevoPedido,
 } = require("../controllers/pedidos");
 
 const router = Router();
@@ -29,13 +29,13 @@ router.get(
   obtenerPedido
 );
 // CREAR PEDIDO
-// router.post(
-//     "/",
-//     [
-//       validarJWT,
-//       esAdminRole,
-//     ],
-//     NuevoPedido
-//   );
+router.post(
+    "/",
+    [
+      validarJWT,
+      esAdminRole,
+    ],
+    NuevoPedido
+  );
 
 module.exports = router;
