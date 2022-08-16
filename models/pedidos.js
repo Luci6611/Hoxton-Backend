@@ -2,11 +2,8 @@ const {Schema,  model} = require("mongoose");
 
 const PedidoSchema = Schema({
 
-pedido:{
-        type: String,
-        required:[true,"El nombre es obligatorio"],
-        unique: true,
-    },
+
+    
      usuario:{
         type:Schema.Types.ObjectId,
         ref:"Usuario",
@@ -24,9 +21,9 @@ pedido:{
 
     },
     entrega: {
-        type: String,
-        enum: ["Pendiente", "Listo"],
-        default: "Pendiente",
+        type:Boolean,
+       
+        default: false,
       },
     estado:{
         type: Boolean,

@@ -12,7 +12,7 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
         Pedido.find(query)
         .skip(Number(desde))
         .limit(Number(limite))
-        .populate("menu", "nombre")
+        .populate("menu", "nombre precio")
         .populate("usuario", "nombre"),
 
     ]);
@@ -28,7 +28,7 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
 const obtenerPedido = async(req= request, res= response)=>{
     const {id} = req.params;
     const pedido = await Pedido.findById(id)
-    .populate("menu", "nombre")
+    .populate("menu", "nombre precio")
     .populate("usuario", "nombre");
 
 res.json({
