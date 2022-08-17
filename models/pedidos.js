@@ -7,17 +7,17 @@ const PedidoSchema = Schema({
      usuario:{
         type:Schema.Types.ObjectId,
         ref:"Usuario",
-        required: true,
+        required:[ true,"el usuario es obligatorio"],
     },
      
     fecha:{
         type:Date,
-        required:true,
+        default:Date.now,
     },
     menu:{  
         type:Schema.Types.ObjectId,
         ref:"Menu",
-        required:true,
+        required:[ true,"el menu es obligatorio"],
 
     },
     entrega: {
@@ -28,7 +28,6 @@ const PedidoSchema = Schema({
     estado:{
         type: Boolean,
         default:true,
-        required: true,
     },
   
     

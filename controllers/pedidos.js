@@ -1,7 +1,5 @@
 const {request, response, json} = require("express");
 const Pedido = require("../models/pedidos");
-const Usuario = require("../models/usuarios");
-const Menu = require("../models/menus");
 
 
 // GET PARA TRAER TODOS LOS PEDIDOS PAGINADOS
@@ -28,8 +26,8 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
 // OBTENER UN PEDIDO POR SU ID
 
 const obtenerPedido = async(req= request, res= response)=>{
-    const {id} = req.params;
-    const pedido = await Pedido.findById(id)
+    const {_id} = req.params;
+    const pedido = await Pedido.findById(_id)
     .populate("menu", "nombre precio")
     .populate("usuario", "nombre");
 
@@ -44,23 +42,29 @@ res.json({
 // CREAR UN PEDIDO
 const  NuevoPedido= async(req=request, res=resolve)=> {
 
-    const  { fecha,estado,entrega} = req.body;
+    const  { usuario_id, fecha, menu_id, estado,entrega} = req.body;
 
-    const data ={
-        usuario: req.usuario._id,
-        menu:req.menu._id,
-        fecha,
-        estado,
-        entrega
-    };
-    const pedido=new Pedido(data);
+    const pedido= new Pedido({usuario: usuario_id, menu: menu_id, fecha: fecha,estado: estado, entrega:entrega});
     await pedido.save();
-
+    console.log(request);
     res.status(201).json({
+        msg:"pedido agregado correctamente a la base de datos",
     pedido,
     
-}); }
+}); 
+}
 
+// ACTUALIZAR PEDIDO
+
+const pedidoPut=async(req= request, res= response)=>{
+    const {id}= req.params;
+    const  { usuario, date, menu, estado, entrega} = req.body;
+    const pedido= await Pedido.findByIdAndUpdate(id,{entrega: true},{new:true});
+    res.json({
+        msg: "Pedido Realizado",
+        pedido,
+    });
+}
 
 
 module.exports = {

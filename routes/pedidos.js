@@ -31,11 +31,10 @@ router.get(
 // CREAR PEDIDO
 router.post(
     "/",
-    [
-      validarJWT,
-      esAdminRole,
-    ],
     NuevoPedido
   );
+
+
+  
 
 module.exports = router;
