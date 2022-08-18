@@ -2,6 +2,7 @@ const Role = require("../models/role");
 const Usuario = require("../models/usuarios");
 const Categoria = require("../models/categorias");
 const Menu = require("../models/menus")
+const Pedido = require("../models/pedidos");
 
 const esRoleValido = async (role="")=>{
    
@@ -49,10 +50,20 @@ const categoriaExiste =async(id)=>{
         };
         }
 
+         // validar si pedido existe por id
+    const pedidoExiste =async(id)=>{
+    
+        const existePedido = await Pedido.findById(id);
+        
+        if (!existePedido) {
+            throw new Error(`El Pedido con el id ${id} no existe en la Base de Datos`);
+        };
+        }
 module.exports ={
     esRoleValido,
     emailExiste,
     idExiste,
     categoriaExiste,
-    menuExiste
+    menuExiste,
+    pedidoExiste
 };
