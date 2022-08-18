@@ -11,6 +11,7 @@ class server{
         this.categoriasPath = "/api/categorias";
         this.menuPath = "/api/menus";
         this.buscarPath = "/api/buscar";
+        this.pedidosPath = "/api/pedidos";
 
         this.conectarDb ();
         this.middleware();
@@ -37,6 +38,7 @@ class server{
       this.app.use(this.authPath,require("../routes/auth"));
       this.app.use(this.menuPath,require("../routes/menus"));
       this.app.use(this.buscarPath,require("../routes/buscar"));
+      this.app.use(this.pedidosPath,require("../routes/pedidos"));
     }
     listen(){
         this.
