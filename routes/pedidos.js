@@ -8,7 +8,7 @@ const {
   obtenerLosPedidos,
   actualizarPedido,
   borrarPedido,
-  obtenerPedido,
+  
   NuevoPedido,
 } = require("../controllers/pedidos");
 
@@ -17,17 +17,7 @@ const router = Router();
 
 router.get("/",  validarJWT ,obtenerLosPedidos);
 
-// OBTENER UN PEDIDO POR SU ID
-router.get(
-  "/:_id",
-  [
-    validarJWT,
-    check("id", "No es un id de mongo valido").isMongoId(),
-    check("id").custom(pedidoExiste), //"validando si producto exite por id"
-    validarCampos,
-  ],
-  obtenerPedido
-);
+
 // CREAR PEDIDO
 router.post( "/",[
   validarJWT,
@@ -40,6 +30,7 @@ router.post( "/",[
   // ACTUALIZAR PEDIDO
   router.put("/:id",[
     validarJWT,
+    esAdminRole,
     check("id","No es un id de mongo valido").isMongoId(),
     check("id").custom(pedidoExiste),
     validarCampos

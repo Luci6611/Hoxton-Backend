@@ -2,6 +2,7 @@ const Role = require("../models/role");
 const Usuario = require("../models/usuarios");
 const Categoria = require("../models/categorias");
 const Menu = require("../models/menus")
+const Pedido = require("../models/pedidos");
 
 const esRoleValido = async (role="")=>{
    

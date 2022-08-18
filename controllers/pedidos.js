@@ -23,20 +23,6 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
     });
 };
 
-// OBTENER UN PEDIDO POR SU ID
-
-const obtenerPedido = async(req= request, res= response)=>{
-    const {id} = req.params;
-    const pedido = await Pedido.findById(id)
-    .populate("menu", "nombre precio")
-    .populate("usuario", "nombre");
-
-res.json({
-   pedido,
-});
-
-}
-
 
 
  
@@ -52,6 +38,7 @@ const NuevoPedido = async (req = request, res = response) => {
     console.log(pedido);
   
     await pedido.save();
+
     res.status(201).json({
       msg: "pedido agregado correctamente a la base de datos",
       pedido,
@@ -60,19 +47,19 @@ const NuevoPedido = async (req = request, res = response) => {
 // ACTUALIZAR PEDIDO
 
 const actualizarPedido=async(req= request, res= response)=>{
-    const {_id}= req.params;
+    const {id}= req.params;
     const  { usuario, date, menu, estado, entrega} = req.body;
-    const pedido= await Pedido.findByIdAndUpdate(_id,{entrega: true},{new:true});
+    const pedido= await Pedido.findByIdAndUpdate(id,{entrega: true},{new:true});
     res.json({
         msg: "Pedido Realizado",
-        pedido,
+     
     });
 }
 
 
 module.exports = {
     obtenerLosPedidos,
-    obtenerPedido,
+
     NuevoPedido,
     actualizarPedido
 
