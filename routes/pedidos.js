@@ -19,7 +19,7 @@ router.get("/",  validarJWT ,obtenerLosPedidos);
 
 // OBTENER UN PEDIDO POR SU ID
 router.get(
-  "/:id",
+  "/:_id",
   [
     validarJWT,
     check("id", "No es un id de mongo valido").isMongoId(),
@@ -29,11 +29,21 @@ router.get(
   obtenerPedido
 );
 // CREAR PEDIDO
-router.post(
-    "/",
+router.post( "/",[
+  validarJWT,
+  check("menu","El menu es obligatorio").notEmpty(),
+  validarCampos
+],
     NuevoPedido
   );
 
+  // ACTUALIZAR PEDIDO
+  router.put("/:id",[
+    validarJWT,
+    check("id","No es un id de mongo valido").isMongoId(),
+    check("id").custom(pedidoExiste),
+    validarCampos
+  ],actualizarPedido);
 
   
 
