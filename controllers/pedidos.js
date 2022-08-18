@@ -24,6 +24,7 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
 };
 
 
+// CREAR PEDIDO NUEVO
 
  
 const NuevoPedido = async (req = request, res = response) => {
@@ -56,10 +57,27 @@ const actualizarPedido=async(req= request, res= response)=>{
     });
 }
 
+// INACTIVAR PEDIDO
+const borrarPedido = async(req,res) =>{
+    const { id } = req.params;
+
+    const pedidoBorrado = await Pedido.findByIdAndUpdate(
+        id,
+        { estado:false},
+        {new:true}    
+        );
+
+        res.json({
+            msg:"Pedido borrado",
+            pedidoBorrado
+
+        });
+};
+
 
 module.exports = {
     obtenerLosPedidos,
-
+    borrarPedido,
     NuevoPedido,
     actualizarPedido
 

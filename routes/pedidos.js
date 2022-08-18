@@ -8,7 +8,6 @@ const {
   obtenerLosPedidos,
   actualizarPedido,
   borrarPedido,
-  
   NuevoPedido,
 } = require("../controllers/pedidos");
 
@@ -35,6 +34,14 @@ router.post( "/",[
     check("id").custom(pedidoExiste),
     validarCampos
   ],actualizarPedido);
+  // INACTIVAR PEDIDO
+  router.delete("/:id",[
+    validarJWT,
+    esAdminRole,
+    check("id","No es un id de mongo valido").isMongoId(),
+    check("id").custom(pedidoExiste),
+    validarCampos
+  ],borrarPedido);
 
   
 
