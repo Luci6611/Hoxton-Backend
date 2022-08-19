@@ -23,7 +23,7 @@ const  obtenerLosMenus = async(req= request, res= response)=>{
 };
 
 
-// OBTENER UN MENU POR SU ID
+// OBTENER UN MENU POR SU ID w
 
 const obtenerMenu = async(req= request, res= response)=>{
     const {id} = req.params;
