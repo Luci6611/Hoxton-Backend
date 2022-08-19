@@ -77,13 +77,16 @@ res.status(201).json({
 // ACTUALIZAR MENU
 const actualizarMenu = async(req,res) =>{
     const {id} = req.params;
+
     const {precio, categoria, detalle, disponible, img} =  req.body;
+
     const usuario = req.usuario._id;
     let data={
         precio,
         detalle,
         categoria,
         disponible,
+        img,
         usuario,
         img
     };
