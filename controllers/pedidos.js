@@ -24,7 +24,7 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
 };
 
 
-// CREAR PEDIDO NUEVO
+// CREAR PEDIDOS NUEVOS
 
  
 const NuevoPedido = async (req = request, res = response) => {
