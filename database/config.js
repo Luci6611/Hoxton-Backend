@@ -1,4 +1,4 @@
-// conexion a mi bas de datos
+// conexion a mi base de datos
 const mongoose = require('mongoose');
 
 const dbconnection = async ()=>{
