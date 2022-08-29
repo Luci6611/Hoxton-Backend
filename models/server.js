@@ -25,7 +25,8 @@ class server{
 
     middleware(){
         //cors :
-        this.app.use(cors())
+        this.app.use(cors({origin:process.env.CORS_DEV_CLIENT}))
+
         // leer el body que manda el frontend
         this.app.use(express.json());
         // carpeta public
