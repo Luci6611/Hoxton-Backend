@@ -2,7 +2,7 @@ const {request, response, json} = require("express");
 const Pedido = require("../models/pedidos");
 
 
-// GET PARA TRAER TODOS LOS PEDIDO PAGINADO
+// GET PARA TRAER TODOS LOS PEDIDO PAGINADOs
 const obtenerLosPedidos = async(req= request, res= response)=>{
     const {limite= 6, desde = 0} = req.query;
     const query = {estado:true};
