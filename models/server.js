@@ -24,7 +24,7 @@ class server {
 
   middleware() {
     //cors :
-    this.app.use(cors({ origin:[ process.env.CORS_DEV_CLIENT ]}));
+     this.app.use(cors( ));
 
     // leer el body que manda el frontend
     this.app.use(express.json());
