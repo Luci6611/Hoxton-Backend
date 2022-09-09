@@ -214,3 +214,6 @@
 | Parameter | Description                
 | :-------- | :------- | 
 | `_id` |  `se debe tomar el id del pedido que se quiere inactivar`  | 
+
+
+#### autores: **luciano rivera**, **nicolas morales** , **carlos molina**
