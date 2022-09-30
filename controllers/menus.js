@@ -1,7 +1,7 @@
 const {request, response, json} = require("express");
 const Menu = require("../models/menus");
 
-// GET PARA TRAER TODOS LOS MENUS PAGINADOS
+
 const  obtenerLosMenus = async(req= request, res= response)=>{
     const {limite= 6, desde = 0} = req.query;
     const query = {estado:true};
@@ -23,7 +23,7 @@ const  obtenerLosMenus = async(req= request, res= response)=>{
 };
 
 
-// OBTENER UN MENU POR SU ID w
+
 
 const obtenerMenu = async(req= request, res= response)=>{
     const {id} = req.params;
@@ -37,7 +37,7 @@ res.json({
 
 };
 
-// crear menus nuevos
+
 const CrearMenu = async(req,res) =>{
 const { precio, categoria, detalle , img } = req.body;
 
@@ -53,7 +53,7 @@ if(menuDB){
     });
 }
 
-//  generar los datos a guardar
+
 const data ={
     nombre,
     categoria,
@@ -65,7 +65,7 @@ const data ={
 
 const menu = new Menu(data);
 
-// grabar en la base de datos
+
 await  menu.save();
 
 res.status(201).json({
@@ -74,7 +74,7 @@ res.status(201).json({
 
 };
 
-// ACTUALIZAR MENU
+
 const actualizarMenu = async(req,res) =>{
     const {id} = req.params;
 
@@ -90,7 +90,7 @@ const actualizarMenu = async(req,res) =>{
         usuario,
         img
     };
-    // VALIDANDO SI NOMBRE ESTA EN MAYUSCULA
+    
     if(req.body.nombre){
         data.nombre = req.body.nombre.toUpperCase();
     };
@@ -104,7 +104,7 @@ const actualizarMenu = async(req,res) =>{
 
 };
 
-// BORRAR MENU
+
 const borrarMenu = async(req,res) =>{
     const { id } = req.params;
 

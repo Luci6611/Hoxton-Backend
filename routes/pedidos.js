@@ -12,12 +12,12 @@ const {
 } = require("../controllers/pedidos");
 
 const router = Router();
-// OBTENER TODOS LOS PEDIDOS
+
 
 router.get("/",  validarJWT ,obtenerLosPedidos);
 
 
-// CREAR PEDIDO
+
 router.post( "/",[
   validarJWT,
   check("menu","El menu es obligatorio").notEmpty(),
@@ -26,7 +26,7 @@ router.post( "/",[
     NuevoPedido
   );
 
-  // ACTUALIZAR PEDIDO
+  
   router.put("/:id",[
     validarJWT,
     esAdminRole,
@@ -34,7 +34,7 @@ router.post( "/",[
     check("id").custom(pedidoExiste),
     validarCampos
   ],actualizarPedido);
-  // INACTIVAR PEDIDO
+  
   router.delete("/:id",[
     validarJWT,
     esAdminRole,

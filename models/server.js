@@ -17,22 +17,22 @@ class server {
     this.middleware();
     this.routes();
   }
-  // conectar a base de datos
+  
   async conectarDb() {
     await dbconnection();
   }
 
   middleware() {
-    //cors :
+    
      this.app.use(cors( ));
 
-    // leer el body que manda el frontend
+    
     this.app.use(express.json());
-    // carpeta public
+    
     this.app.use(express.static("public"));
     console.log(process.env.CORS_DEV_CLIENT);
   }
-  // RUTAS
+ 
   routes() {
     this.app.use(this.usuariosEndPoint, require("../routes/usuarios"));
     this.app.use(this.categoriasPath, require("../routes/categorias"));

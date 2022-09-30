@@ -4,7 +4,7 @@ const PedidoSchema = Schema({
   usuario: {
     type: Schema.Types.ObjectId,
     ref: "Usuario",
-    // required: [true, "el usuario es obligatorio"],
+    
   },
 
   fecha: {

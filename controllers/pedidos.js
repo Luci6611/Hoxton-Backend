@@ -2,7 +2,7 @@ const {request, response, json} = require("express");
 const Pedido = require("../models/pedidos");
 
 
-// GET PARA TRAER TODOS LOS PEDIDO PAGINADOs
+
 const obtenerLosPedidos = async(req= request, res= response)=>{
     const {limite= 6, desde = 0} = req.query;
     const query = {estado:true};
@@ -24,7 +24,7 @@ const obtenerLosPedidos = async(req= request, res= response)=>{
 };
 
 
-// CREAR PEDIDOS NUEVOS
+
 
  
 const NuevoPedido = async (req = request, res = response) => {
@@ -36,7 +36,7 @@ const NuevoPedido = async (req = request, res = response) => {
     };
     const pedido = new Pedido(data);
   
-    console.log(pedido);
+  
   
     await pedido.save();
 
@@ -45,7 +45,7 @@ const NuevoPedido = async (req = request, res = response) => {
       pedido,
     });
   };
-// ACTUALIZAR PEDIDO
+
 
 const actualizarPedido=async(req= request, res= response)=>{
     const {id}= req.params;
@@ -57,7 +57,7 @@ const actualizarPedido=async(req= request, res= response)=>{
     });
 }
 
-// INACTIVAR PEDIDO
+
 const borrarPedido = async(req,res) =>{
     const { id } = req.params;
 

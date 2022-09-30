@@ -16,12 +16,12 @@ const router = Router();
 
 router.get("/", obtenerLosMenus);
 
-// LISTAR MENU POR ID
+
 router.get(
   "/:id",
   [
     check("id", "No es un id de mongo valido").isMongoId(),
-    check("id").custom(menuExiste), //"validando si producto exite por id"
+    check("id").custom(menuExiste), 
     validarCampos,
   ],
   obtenerMenu
@@ -45,7 +45,7 @@ router.put(
     validarJWT,
     esAdminRole,
     check("id", "No es un id de mongo valido").isMongoId(),
-    check("id").custom(menuExiste), //"validando si producto exite por id"
+    check("id").custom(menuExiste), 
     validarCampos,
   ],
   actualizarMenu
@@ -57,7 +57,7 @@ router.delete(
     validarJWT,
     esAdminRole,
     check("id", "No es un id de mongo valido").isMongoId(),
-    check("id").custom(menuExiste), //"validando si producto exite por id"
+    check("id").custom(menuExiste), 
     validarCampos,
   ],
   borrarMenu

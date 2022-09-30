@@ -7,9 +7,9 @@ const coleccionesPermitidas = ["categorias", "menus"];
 
 
 
-// buscar por categoria
+
 const buscarCategorias = async (termino = "", res = response) => {
-  // verificar si me mando el id
+
   const isMongoID = ObjectId.isValid(termino);
   if (isMongoID) {
     const categoria = await Categoria.findById(id);
@@ -18,7 +18,7 @@ const buscarCategorias = async (termino = "", res = response) => {
     });
   }
 
-  // VALIDAR SI LA BUSQUEDA SE HACE POR UN NOMBRE
+  
   const regex = new RegExp(termino, "i");
 
   const categorias = await Categoria.find({
@@ -32,7 +32,7 @@ const buscarCategorias = async (termino = "", res = response) => {
 };
 
 const buscarMenus = async (termino = "", res = (res = response)) => {
-  // verificar si me mando el id
+ 
   const isMongoID = ObjectId.isValid(termino);
   if (isMongoID) {
     const menu = await Menu.findById(id);
@@ -41,7 +41,7 @@ const buscarMenus = async (termino = "", res = (res = response)) => {
     });
   }
 
-  // VALIDAR SI LA BUSQUEDA SE HACE POR UN NOMBRE
+
   const regex = new RegExp(termino, "i");
 
   const menus = await Menu.find({
@@ -61,14 +61,14 @@ const buscar = async (req = request, res = response) => {
   const { coleccion, termino } = req.params;
 
  
-  // ver si la coleccion esta en las permitidas
+
   if (!coleccionesPermitidas.includes(coleccion)) {
     return res.status(400).json({
       msg: `Las colecciones permitidas son ${coleccionesPermitidas}`,
     });
   }
 
-  // verificar cual coleccion se recibio
+  
   switch (coleccion) {
     case "categorias":
       buscarCategorias(termino, res);

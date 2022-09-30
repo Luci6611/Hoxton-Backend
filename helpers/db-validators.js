@@ -13,7 +13,7 @@ const esRoleValido = async (role="")=>{
     }
 }
  
- //  validando si email existe en la base de datos
+ 
 const emailExiste =async(email)=>{
     
 const existeEmail = await Usuario.findOne({email});
@@ -21,7 +21,7 @@ if (existeEmail) {
     throw new Error(`El correo ${email} ya existe en la BD`);
 };
 }
-// validar ruta put :id existe en la base de datos 
+
 const idExiste =async(id)=>{
     
     const existeId = await Usuario.findOne({_id:id});
@@ -30,7 +30,7 @@ const idExiste =async(id)=>{
     };
     }
 
-// validar si existe categoria por id
+
 
 const categoriaExiste =async(id)=>{
     
@@ -40,7 +40,7 @@ const categoriaExiste =async(id)=>{
     };
     }
 
-    // validar si menu existe por id
+    
     const menuExiste =async(id)=>{
     
         const existeMenu = await Menu.findById(id);
@@ -50,7 +50,7 @@ const categoriaExiste =async(id)=>{
         };
         }
 
-         // validar si pedido existe por id
+        
     const pedidoExiste =async(id)=>{
     
         const existePedido = await Pedido.findById(id);
